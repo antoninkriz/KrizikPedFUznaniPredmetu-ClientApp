@@ -8,8 +8,12 @@ import {DruhyStduiaResponse, KatedryResponse, OboryResponse, PredmetyResponse} f
   templateUrl: './home.component.html'
 })
 export class HomeComponent {
-  private data: Data = new Data();
   private complete: boolean = false;
+
+  private data: Data = new Data();
+  get dataLists() {
+    return this.data;
+  }
 
   private static readonly types: string[] = ['katedra', 'druhStudia', 'obor', 'predmet'];
   private currentType: string = this.loadTypes[0];
@@ -95,13 +99,13 @@ export class HomeComponent {
         case this.loadTypes[0]:
           this.data.katedra = (<KatedryResponse>result).Katedry;
           break;
-        case this.loadTypes[2]:
+        case this.loadTypes[1]:
           this.data.druhStudia = (<DruhyStduiaResponse>result).DruhyStudia;
           break;
-        case this.loadTypes[3]:
+        case this.loadTypes[2]:
           this.data.obor = (<OboryResponse>result).Obory;
           break;
-        case this.loadTypes[4]:
+        case this.loadTypes[3]:
           this.data.predmet = (<PredmetyResponse>result).Predmety;
           break;
       }

@@ -1,7 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
 import {routing} from "./app.routing";
 
@@ -17,6 +17,8 @@ import {DruhStudiaComponent} from "./home/druhStudia/druhStudia.component";
 import {KatedraComponent} from "./home/katedra/katedra.component";
 import {OborComponent} from "./home/obor/obor.component";
 import {PredmetComponent} from "./home/predmet/predmet.component";
+import {ErrorInterceptor} from "./_helpers/error.interceptor";
+import {JwtInterceptor} from "./_helpers/jwt.interceptor";
 
 @NgModule({
   declarations: [
@@ -40,7 +42,10 @@ import {PredmetComponent} from "./home/predmet/predmet.component";
     HttpClientModule,
     routing
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

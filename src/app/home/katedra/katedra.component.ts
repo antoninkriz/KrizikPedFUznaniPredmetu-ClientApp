@@ -6,5 +6,8 @@ import {Katedra} from "../home.component";
   templateUrl: './katedra.component.html'
 })
 export class KatedraComponent {
-  @Input() private data: Katedra;
+  @Input() private readonly data: Katedra;
+  get inputData() {
+    return this.data;
+  }
 }
