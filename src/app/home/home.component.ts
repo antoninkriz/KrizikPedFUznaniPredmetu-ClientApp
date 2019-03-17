@@ -136,6 +136,7 @@ export class Obor implements IType {
   Name: string;
   YearFrom: number;
   YearTo: number;
+  StudyForm: boolean;
 }
 
 export class Predmet implements IType {
