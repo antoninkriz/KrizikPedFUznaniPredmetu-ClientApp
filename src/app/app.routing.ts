@@ -4,11 +4,17 @@ import {AuthGuard} from "./_guards/auth.guard";
 
 import {HomeComponent} from "./home/home.component";
 import {CredentialsComponent} from "./credentials/credentials.component";
+import {TemplateComponent} from "./template/template.component";
 
 const appRoutes: Routes = [
   {
     path: '',
     component: HomeComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'print',
+    component: TemplateComponent,
     canActivate: [AuthGuard]
   },
   {

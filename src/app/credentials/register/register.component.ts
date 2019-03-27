@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {AuthenticationService} from "../../_services/authentication.service";
@@ -6,9 +6,12 @@ import {first} from "rxjs/operators";
 
 @Component({
   selector: 'app-register',
-  templateUrl: './register.component.html'
+  templateUrl: './register.component.html',
+  styleUrls: ['../loginRegister.component.scss']
 })
 export class RegisterComponent {
+  @Input() disabled: boolean;
+
   registerForm: FormGroup;
 
   error: string = '';

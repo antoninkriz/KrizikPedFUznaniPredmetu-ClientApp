@@ -5,6 +5,8 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
 import {routing} from "./app.routing";
 
+import {ErrorInterceptor} from "./_helpers/error.interceptor";
+import {JwtInterceptor} from "./_helpers/jwt.interceptor";
 import {AppComponent} from './app.component';
 import {NavMenuComponent} from "./nav-menu/nav-menu.component";
 import {HomeComponent} from "./home/home.component";
@@ -17,8 +19,7 @@ import {DruhStudiaComponent} from "./home/druhStudia/druhStudia.component";
 import {KatedraComponent} from "./home/katedra/katedra.component";
 import {OborComponent} from "./home/obor/obor.component";
 import {PredmetComponent} from "./home/predmet/predmet.component";
-import {ErrorInterceptor} from "./_helpers/error.interceptor";
-import {JwtInterceptor} from "./_helpers/jwt.interceptor";
+import {TemplateComponent} from "./template/template.component";
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {JwtInterceptor} from "./_helpers/jwt.interceptor";
     KatedraComponent,
     DruhStudiaComponent,
     OborComponent,
-    PredmetComponent
+    PredmetComponent,
+    TemplateComponent
   ],
   imports: [
     BrowserModule,

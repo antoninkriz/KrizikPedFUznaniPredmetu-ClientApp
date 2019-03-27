@@ -1,8 +1,7 @@
+import {User} from "./user";
+
 export class UserResponse {
   Success: boolean;
-  Code: number;
-  Email: string;
-  Name: string;
-  Surname: string;
-  Phone: string;
+  Message: string;
+  User: User;
 }

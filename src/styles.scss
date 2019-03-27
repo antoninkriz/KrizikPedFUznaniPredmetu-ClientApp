@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+
+// PRINT STYLES
+@media print {
+  @page {
+    size: A4 landscape;
+    margin: 0;
+    padding: 0;
+    width: 297mm;
+    height: 210mm;
+  }
+
+  .template, html, head {
+    margin: 0;
+    padding: 0;
+    width: 296mm;
+    height: 418mm;
+  }
+
+  header {
+    display: none;
+  }
+
+  .template {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}

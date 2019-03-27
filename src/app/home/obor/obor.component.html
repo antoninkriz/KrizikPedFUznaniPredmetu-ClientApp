@@ -1,4 +1,4 @@
 <div>
-  <span>{{data.Code}} - {{data.Name}}</span>
+  <span>{{data.StudyForm ? "KS" : "DS"}} - {{data.Code}} - {{data.Name}}</span>
   <span *ngIf="data.YearFrom || data.YearTo">{{data.YearFrom}} - {{data.YearTo}}</span>
 </div>

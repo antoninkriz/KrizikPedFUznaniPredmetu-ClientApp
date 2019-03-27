@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {map} from "rxjs/operators";
 
 @Component({
   selector: 'app-credentials',
@@ -7,9 +8,19 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./credentials.component.scss']
 })
 export class CredentialsComponent {
-  type: string = 'login';
+  private credentialsType: string = 'login';
 
-  constructor(route: ActivatedRoute) {
-    this.type = route.data['type'];
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+    route.data.pipe(map(d => {
+      this.credentialsType = d['type'];
+    }));
+  }
+
+  switchType(credType: string) {
+    history.pushState(null, null, `/${credType}`);
+    this.credentialsType = credType;
   }
 }

@@ -1,0 +1,29 @@
+app-nav-menu {
+  position: fixed;
+  background: white;
+  box-shadow: gray 0 0 10px;
+  top: 0;
+  width: 100%;
+}
+
+app-template {
+  max-width: 1280px;
+  width: 100%;
+}
+
+main {
+  min-height: calc(100vh - 90px);
+  margin-top: 90px;
+  padding: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #343434;
+}
+
+
+@media screen and (max-width: 768px) {
+  main {
+    padding: 0;
+  }
+}
