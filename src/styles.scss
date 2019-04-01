@@ -1,4 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'colors.scss';
+
+html {
+  overflow-y: scroll;
+}
+
+main > * {
+  min-height: 683px;
+  max-width: 480px;
+  width: 100%;
+  margin: auto;
+  background: $color-white;
+  border-radius: 5px;
+  box-shadow: grey 0 0 40px;
+}
+
+@media screen and (max-width: 768px) {
+  main > * {
+    max-width: none;
+    height: calc(100vh - 90px);
+  }
+}
 
 // PRINT STYLES
 @media print {

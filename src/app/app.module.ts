@@ -10,8 +10,6 @@ import {JwtInterceptor} from "./_helpers/jwt.interceptor";
 import {AppComponent} from './app.component';
 import {NavMenuComponent} from "./nav-menu/nav-menu.component";
 import {HomeComponent} from "./home/home.component";
-import {CounterComponent} from "./counter/counter.component";
-import {FetchDataComponent} from "./fetch-data/fetch-data.component";
 import {CredentialsComponent} from "./credentials/credentials.component";
 import {RegisterComponent} from "./credentials/register/register.component";
 import {LoginComponent} from "./credentials/login/login.component";
@@ -20,14 +18,15 @@ import {KatedraComponent} from "./home/katedra/katedra.component";
 import {OborComponent} from "./home/obor/obor.component";
 import {PredmetComponent} from "./home/predmet/predmet.component";
 import {TemplateComponent} from "./template/template.component";
+import {UserComponent} from "./user/user.component";
+import {InputControl as InputComponent} from "./_controls/input/input.component";
+import {ButtonControl as ButtonComponent} from "./_controls/button/button.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    CounterComponent,
-    FetchDataComponent,
     CredentialsComponent,
     RegisterComponent,
     LoginComponent,
@@ -35,7 +34,10 @@ import {TemplateComponent} from "./template/template.component";
     DruhStudiaComponent,
     OborComponent,
     PredmetComponent,
-    TemplateComponent
+    TemplateComponent,
+    UserComponent,
+    InputComponent,
+    ButtonComponent
   ],
   imports: [
     BrowserModule,

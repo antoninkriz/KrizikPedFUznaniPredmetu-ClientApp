@@ -1,0 +1,57 @@
+@import '../../../colors.scss';
+
+.inputWrapper {
+  position: relative;
+  width: 100%;
+
+  &:after {
+    position: absolute;
+    width: 10%;
+    height: 2px;
+    bottom: 3px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    content: "";
+    background-color: $color-dark;
+    transition: width ease .3s, height ease .3s, background-color ease .1s;
+  }
+
+  &.valid:after {
+    @keyframes toSuccess {
+      to{background-color: $color-green;}
+    }
+
+    animation: toSuccess;
+    animation-duration: .1s;
+    animation-fill-mode: forwards;
+    animation-delay: .1s;
+  }
+
+  &.invalid:after {
+    @keyframes toError {
+      to{background-color: $color-red;}
+    }
+
+    animation: toError;
+    animation-duration: .1s;
+    animation-fill-mode: forwards;
+    animation-delay: .1s;
+  }
+
+  &:focus-within:after {
+    height: 2px;
+    width: 90%;
+  }
+
+  input {
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
+    border-bottom: solid #ccc 1px;
+    background: #eee;
+  }
+}

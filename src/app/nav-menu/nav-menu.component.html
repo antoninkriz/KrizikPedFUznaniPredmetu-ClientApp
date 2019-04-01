@@ -1,6 +1,9 @@
 <header>
   <nav>
     <h1>KarolinkaUznani</h1>
-    <span *ngIf="authenticationService.isLoggedIn" (click)="logout()">Odhlásit se</span>
+    <div>
+      <a routerLink="/user" *ngIf="authenticationService.isLoggedIn">Nastavení</a>
+      <a [routerLink]="" *ngIf="authenticationService.isLoggedIn" (click)="logout()">Odhlásit se</a>
+    </div>
   </nav>
 </header>

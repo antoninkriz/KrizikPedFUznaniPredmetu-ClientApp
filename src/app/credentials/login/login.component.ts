@@ -13,11 +13,10 @@ import {AuthenticationService} from "../../_services/authentication.service";
 export class LoginComponent {
   @Input() disabled: boolean;
 
-  loginForm: FormGroup;
+  private loginForm: FormGroup;
 
-  error: string = '';
-  loading: boolean = false;
-  returnUrl: string;
+  private error: string = '';
+  private readonly returnUrl: string;
 
   constructor(private formBuilder: FormBuilder,
               private route: ActivatedRoute,
@@ -41,7 +40,6 @@ export class LoginComponent {
       return;
     }
 
-    this.loading = true;
     let c = this.loginForm.controls;
 
     this.authenticationService.login(c.email.value, c.password.value)

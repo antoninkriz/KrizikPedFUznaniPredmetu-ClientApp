@@ -1,0 +1,34 @@
+<div class="user">
+  <div class="userWrapper">
+    <form [formGroup]="updateForm" (ngSubmit)="onSubmit('update')" method="post">
+      <span [ngClass]='message.update.Success ? "success" : "error"'>{{message.update.Message ? message.update.Message : message.update.Success ? 'Údaje úspěšně aktualizovány' : ''}}</span>
+      <div class="inputWrapper">
+        <input placeholder="Jméno" type="text" formControlName="name" required>
+      </div>
+      <div class="inputWrapper">
+        <input placeholder="Příjmení" type="text" formControlName="surname" required>
+      </div>
+      <div class="inputWrapper">
+        <input placeholder="ID studenta" type="text" formControlName="student" pattern="^[0-9]+$" required>
+      </div>
+      <div class="inputWrapper">
+        <input placeholder="Telefon" type="tel" formControlName="phone" required/>
+      </div>
+      <div class="inputWrapper">
+        <input placeholder="Email" type="email" formControlName="email" required/>
+      </div>
+      <button type="submit">Aktualizovat údaje</button>
+    </form>
+    <form [formGroup]="passwordForm" (ngSubmit)="onSubmit('password')" method="post">
+      <span [ngClass]='message.password.Success ? "success" : "error"'>{{message.password.Message ? message.password.Message : message.password.Success ? 'Heslo změněno' : ''}}</span>
+      <div class="inputWrapper">
+        <input placeholder="Nové heslo" type="password" formControlName="password" required/>
+      </div>
+      <div class="inputWrapper">
+        <input placeholder="Nové heslo znovu" type="password" formControlName="passwordRepeat" required/>
+      </div>
+      <button type="submit">Změnit heslo</button>
+    </form>
+    <button (click)="deleteUser()">Smazat účet</button>
+  </div>
+</div>

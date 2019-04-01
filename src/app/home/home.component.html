@@ -1,17 +1,21 @@
-<div *ngFor="let type of component.loadTypes">
-  <div class="searchBox" [ngClass]="type" [class.expanded]="type == currentType" (click)="currentType = type">
+<div class="searchWrapper">
+  <div class="searchBox" *ngFor="let type of component.loadTypes" [ngClass]="type" [class.expanded]="type == currentType" (click)="currentType = type">
     <div class="title">
       <h3>{{component.titles[type]}}{{selected[type] != null ? ' - ' + (selected[type].Code ? selected[type].Code : selected[type].Name) : ''}}</h3>
     </div>
     <div class="inputBox">
-      <input #inp type="text" placeholder="{{component.inputPlaceholders[type]}}" (keyup)="search(type, inp.value)">
-      <div class="results" [ngSwitch]="type" *ngFor="let d of dataList[type]">
-        <list-katedra *ngSwitchCase="component.loadTypes[0]" (click)="listSelect(type, d)" [data]="d"></list-katedra>
-        <list-druhStudia *ngSwitchCase="component.loadTypes[1]" (click)="listSelect(type, d)" [data]="d"></list-druhStudia>
-        <list-obor *ngSwitchCase="component.loadTypes[2]" (click)="listSelect(type, d)" [data]="d"></list-obor>
-        <list-predmet *ngSwitchCase="component.loadTypes[3]" (click)="listSelect(type, d)" [data]="d"></list-predmet>
+      <div class="inputWrapper">
+        <control-input value="{{inputValues[type]}}" placeholder="{{component.inputPlaceholders[type]}}" [keyup]="searchFnc[type]" ngDefaultControl></control-input>
+      </div>
+      <div class="results">
+        <div class="result" [ngSwitch]="type" *ngFor="let d of dataList[type]">
+            <list-katedra *ngSwitchCase="component.loadTypes[0]" (click)="listSelect(type, d)" [data]="d"></list-katedra>
+            <list-druhStudia *ngSwitchCase="component.loadTypes[1]" (click)="listSelect(type, d)" [data]="d"></list-druhStudia>
+            <list-obor *ngSwitchCase="component.loadTypes[2]" (click)="listSelect(type, d)" [data]="d"></list-obor>
+            <list-predmet *ngSwitchCase="component.loadTypes[3]" (click)="listSelect(type, d)" [data]="d"></list-predmet>
+        </div>
       </div>
     </div>
   </div>
+  <control-button [disable]="!formComplete" (click)="complete()" type="submit" text="Hotovo" ngDefaultControl></control-button>
 </div>
-<button [disabled]="!formComplete" (click)="complete()">Hotovo</button>

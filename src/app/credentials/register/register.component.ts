@@ -12,11 +12,10 @@ import {first} from "rxjs/operators";
 export class RegisterComponent {
   @Input() disabled: boolean;
 
-  registerForm: FormGroup;
+  private registerForm: FormGroup;
 
-  error: string = '';
-  loading: boolean = false;
-  returnUrl: string;
+  private error: string = '';
+  private readonly returnUrl: string;
 
   constructor(private formBuilder: FormBuilder,
               private route: ActivatedRoute,
@@ -44,7 +43,6 @@ export class RegisterComponent {
     if (this.registerForm.invalid)
       return;
 
-    this.loading = true;
     let c = this.registerForm.controls;
 
     if (c.password.value != c.passwordRepeat.value)

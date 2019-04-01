@@ -1,0 +1,21 @@
+@import '../../../colors.scss';
+
+button {
+  display: block;
+  width: 100%;
+  text-align: center;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  border-bottom: inset $color-darker 3px;
+  border-right: inset $color-darker 3px;
+  color: $color-white;
+  background: $color-dark;
+  cursor: pointer;
+  margin: auto;
+  transition: all ease .2s;
+
+  &:hover, &:focus {
+    opacity: .9;
+  }
+}

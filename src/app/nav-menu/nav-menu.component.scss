@@ -1,3 +1,5 @@
+@import '../../colors.scss';
+
 header {
   nav {
     display: flex;
@@ -10,11 +12,10 @@ header {
       margin: 0;
       font-size: 24px;
     }
-  }
-}
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
+    a {
+      padding: 10px;
+      text-decoration: none;
+    }
   }
 }

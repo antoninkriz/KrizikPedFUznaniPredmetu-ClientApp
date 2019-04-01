@@ -1,18 +1,17 @@
 import {Component} from '@angular/core';
 import {Router} from "@angular/router";
 import {HttpClient} from '@angular/common/http';
-import {map} from "rxjs/operators";
 
 import {Config} from "../config";
 import {UserService} from "../_services/user.service";
 import {AuthenticationService} from "../_services/authentication.service";
 import {DruhyStduiaResponse, KatedryResponse, OboryResponse, PredmetyResponse} from "../_models/searchResponses";
 import {TemplateData} from "../_models/templateData";
-import {UserResponse} from "../_models/userResponse";
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html'
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
   public component = HomeComponent;
@@ -41,6 +40,13 @@ export class HomeComponent {
     predmet: null
   };
 
+  private inputValues = {
+    katedra: "",
+    druhStudia: "",
+    obor: "",
+    predmet: ""
+  };
+
   constructor(
     private router: Router,
     private http: HttpClient,
@@ -61,12 +67,15 @@ export class HomeComponent {
 
     if (i < 3) {
       this.dataList.predmet = [];
+      this.inputValues.predmet = "";
 
       if (i < 2) {
         this.dataList.obor = [];
+        this.inputValues.obor = "";
 
         if (i < 1) {
           this.dataList.druhStudia = [];
+          this.inputValues.druhStudia = "";
         }
       }
     }
@@ -81,7 +90,16 @@ export class HomeComponent {
     }
   }
 
+  private searchFnc = {
+    [HomeComponent.loadTypes[0]]: (s) => this.search(HomeComponent.loadTypes[0], s),
+    [HomeComponent.loadTypes[1]]: (s) => this.search(HomeComponent.loadTypes[1], s),
+    [HomeComponent.loadTypes[2]]: (s) => this.search(HomeComponent.loadTypes[2], s),
+    [HomeComponent.loadTypes[3]]: (s) => this.search(HomeComponent.loadTypes[3], s)
+  };
+
   private search(type: string, value: string) {
+    this.inputValues[type] = value;
+
     this.http.post(`${Config.API_URL}/data/${type}`, type == HomeComponent.loadTypes[0] ? {
       // katedra
       searchText: value

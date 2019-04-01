@@ -1,0 +1,28 @@
+@import '../../colors.scss';
+
+.user {
+  padding: 29px 30px 60px;
+
+  form {
+    &:not(:last-of-type) {
+      padding-bottom: 25px;
+      margin-bottom: 25px;
+      border-bottom: solid 1px gray;
+    }
+
+    .error, .success {
+      text-align: center;
+      height: 21px;
+      display: block;
+      margin-bottom: 15px;
+    }
+
+    .error {
+      color: $color-red;
+    }
+
+    .success {
+      color: $color-green;
+    }
+  }
+}

@@ -1,0 +1,16 @@
+<div [ngClass]="['inputWrapper', classes ? classes : '']"
+     [class.valid]="valid"
+     [class.invalid]="!valid && inp.value.length > 0"
+     [formGroup]="formGroup ? formGroup : null">
+  <input #inp
+         (keyup)="onChange(inp.value)"
+         [value]="value"
+         [placeholder]="placeholder"
+         [type]="type"
+         [formControlName]="formControlName"
+         [pattern]="pattern"
+         [attr.minLength]="minLen ? minLen : null"
+         [attr.maxLength]="maxLen ? maxLen : null"
+         [attr.disabled]="disable ? '' : null"
+         [attr.required]="required ? '' : null"/>
+</div>

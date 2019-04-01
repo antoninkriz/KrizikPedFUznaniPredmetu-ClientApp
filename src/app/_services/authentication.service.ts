@@ -6,6 +6,7 @@ import {map} from 'rxjs/operators';
 import {Config} from "../config";
 import {Token} from "../_models/token";
 import {TokenResponse} from "../_models/tokenResponse";
+import {BasicResponse} from "../_models/basicResponse";
 
 @Injectable({providedIn: 'root'})
 export class AuthenticationService {
@@ -91,11 +92,35 @@ export class AuthenticationService {
 
   logout() {
     // remove user from local storage to log user out
-
     if (this.currentTokenValue && this.currentTokenValue.Refresh)
       window.clearInterval(this.currentTokenValue.Refresh);
 
     localStorage.removeItem('currentToken');
     this.currentTokenSubject.next(null);
+  }
+
+  update(name: string, surname: string, student: number, phone: string, email: string) {
+    return this.http.post<BasicResponse>(`${Config.API_URL}/user/update`, {
+      code: student,
+      email: email,
+      name: name,
+      surname: surname,
+      phone: phone
+    }).pipe(map(resp => {
+      return resp;
+    }));
+  }
+
+  password(password: string) {
+    return this.http.post<BasicResponse>(`${Config.API_URL}/user/password`, {
+      password: password
+    }).pipe(map(resp => {
+      return resp;
+    }));
+  }
+
+  delete() {
+    return this.http.get(`${Config.API_URL}/user/delete`)
+      .pipe(map(() => this.logout()));
   }
 }

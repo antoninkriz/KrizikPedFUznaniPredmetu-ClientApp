@@ -1,13 +1,14 @@
-app-nav-menu {
-  position: fixed;
-  background: white;
-  box-shadow: gray 0 0 10px;
-  top: 0;
-  width: 100%;
+@import '../colors.scss';
+
+router-outlet {
+  display: none;
 }
 
-app-template {
-  max-width: 1280px;
+app-nav-menu {
+  position: fixed;
+  background: $color-white;
+  box-shadow: gray 0 0 10px;
+  top: 0;
   width: 100%;
 }
 
@@ -18,12 +19,12 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #343434;
+  background: $color-dark;
 }
-
 
 @media screen and (max-width: 768px) {
   main {
+    min-height: auto;
     padding: 0;
   }
 }
