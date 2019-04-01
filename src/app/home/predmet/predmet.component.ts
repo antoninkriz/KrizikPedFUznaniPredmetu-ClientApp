@@ -6,5 +6,5 @@ import {Predmet} from "../home.component";
   templateUrl: './predmet.component.html'
 })
 export class PredmetComponent {
-  @Input() private data: Predmet;
+  @Input() public data: Predmet;
 }

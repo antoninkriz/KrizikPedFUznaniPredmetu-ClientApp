@@ -9,9 +9,9 @@ import {TemplateData} from "../_models/templateData";
   styleUrls: ['./template.component.scss']
 })
 export class TemplateComponent {
-  private date: string;
-  private templ: TemplateData;
-  private templPredmetName: string[];
+  public date: string;
+  public templ: TemplateData;
+  public templPredmetName: string[];
 
   constructor(
     private router: Router

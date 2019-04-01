@@ -12,9 +12,9 @@ import {first} from "rxjs/operators";
 export class RegisterComponent {
   @Input() disabled: boolean;
 
-  private registerForm: FormGroup;
+  public registerForm: FormGroup;
 
-  private error: string = '';
+  public error: string = '';
   private readonly returnUrl: string;
 
   constructor(private formBuilder: FormBuilder,

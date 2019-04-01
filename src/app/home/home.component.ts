@@ -30,7 +30,7 @@ export class HomeComponent {
     [HomeComponent.loadTypes[3]]: "Vyhledejte předmět"
   };
 
-  private formComplete: boolean = false;
+  public formComplete: boolean = false;
   private currentType: string = HomeComponent.loadTypes[0];
   private dataList: Data = new Data();
   private selected = {
@@ -134,7 +134,7 @@ export class HomeComponent {
     }, error => console.error(error));
   }
 
-  private complete() {
+  public complete() {
     if (this.formComplete) {
       this.userService.getCurrent().subscribe(u => {
         if (u != null) {

@@ -6,5 +6,5 @@ import {DruhStudia} from "../home.component";
   templateUrl: './druhStudia.component.html'
 })
 export class DruhStudiaComponent {
-  @Input() private data: DruhStudia;
+  @Input() public readonly data: DruhStudia;
 }

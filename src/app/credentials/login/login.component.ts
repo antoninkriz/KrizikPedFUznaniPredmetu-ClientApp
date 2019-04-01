@@ -13,9 +13,9 @@ import {AuthenticationService} from "../../_services/authentication.service";
 export class LoginComponent {
   @Input() disabled: boolean;
 
-  private loginForm: FormGroup;
+  public loginForm: FormGroup;
 
-  private error: string = '';
+  public error: string = '';
   private readonly returnUrl: string;
 
   constructor(private formBuilder: FormBuilder,

@@ -12,7 +12,7 @@ export class NavMenuComponent {
 
   constructor(
     private router: Router,
-    private authenticationService: AuthenticationService
+    public authenticationService: AuthenticationService
   ) {
   }
 

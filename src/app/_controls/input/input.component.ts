@@ -26,7 +26,7 @@ export class InputControl {
   @Input() value: string = '';
   @Input() keyup: Function = () => {};
 
-  private valid: boolean;
+  public valid: boolean;
 
   constructor(
     private formBuilder: FormBuilder
@@ -37,7 +37,7 @@ export class InputControl {
     }
   }
 
-  private onChange(value: string) {
+  public onChange(value: string) {
     this.valid = this.validate(value) && value.length > 0;
     this.value = value;
     this.keyup(value);

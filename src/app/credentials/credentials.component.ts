@@ -8,7 +8,7 @@ import {map} from "rxjs/operators";
   styleUrls: ['./credentials.component.scss']
 })
 export class CredentialsComponent {
-  private credentialsType: string = 'login';
+  public credentialsType: string = 'login';
 
   constructor(
     private router: Router,

@@ -11,7 +11,7 @@ import {UserService} from "../_services/user.service";
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent {
-  private message = {
+  public message = {
     update: {
       Success: false,
       Message: null
@@ -22,8 +22,8 @@ export class UserComponent {
     }
   };
 
-  private updateForm: FormGroup;
-  private passwordForm: FormGroup;
+  public updateForm: FormGroup;
+  public passwordForm: FormGroup;
 
 
   constructor(private formBuilder: FormBuilder,

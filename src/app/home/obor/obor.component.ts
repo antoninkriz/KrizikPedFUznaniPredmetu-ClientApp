@@ -6,5 +6,5 @@ import {Obor} from "../home.component";
   templateUrl: './obor.component.html'
 })
 export class OborComponent {
-  @Input() private data: Obor;
+  @Input() public readonly data: Obor;
 }
