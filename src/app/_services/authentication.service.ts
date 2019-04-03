@@ -93,7 +93,7 @@ export class AuthenticationService {
   logout() {
     // remove user from local storage to log user out
     if (this.currentTokenValue && this.currentTokenValue.Refresh)
-      window.clearInterval(this.currentTokenValue.Refresh);
+      clearInterval(this.currentTokenValue.Refresh);
 
     localStorage.removeItem('currentToken');
     this.currentTokenSubject.next(null);
