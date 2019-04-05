@@ -7,16 +7,45 @@
     margin-bottom: 15px;
 
     .results {
-      transition: all .3s ease;
+      position: relative;
       height: 100%;
       min-height: 1px;
       max-height: 200px;
       overflow-y: auto;
+      transition: all .3s ease;
 
       &:empty {
         height: 0;
         max-height: 0;
         min-height: 0;
+      }
+
+      &:after {
+        position: absolute;
+        height: 2px;
+        width: 80%;
+        content: '';
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        background: $color-dark;
+      }
+
+      .result {
+        transition: all .2s ease;
+        border-bottom: solid 1px $color-dark;
+
+        &:hover {
+          background: $color-light;
+          border-bottom: solid 1px $color-darker;
+        }
+
+        & > * {
+          display: block;
+          cursor: pointer;
+          padding: 5px;
+        }
       }
     }
   }

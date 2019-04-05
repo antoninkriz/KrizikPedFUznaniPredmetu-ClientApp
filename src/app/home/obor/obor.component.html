@@ -1,2 +1,3 @@
 <span>{{data.StudyForm ? "KS" : "DS"}} - {{data.Code}} - {{data.Name}}</span>
-<span *ngIf="data.YearFrom || data.YearTo">{{data.YearFrom}} - {{data.YearTo}}</span>
+<br>
+<span *ngIf="data.YearFrom || data.YearTo">{{data.YearFrom ? data.YearFrom : '~'}} - {{data.YearTo ? data.YearTo : '~'}}</span>

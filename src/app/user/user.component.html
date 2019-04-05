@@ -2,33 +2,19 @@
   <div class="userWrapper">
     <form [formGroup]="updateForm" (ngSubmit)="onSubmit('update')" method="post">
       <span [ngClass]='message.update.Success ? "success" : "error"'>{{message.update.Message ? message.update.Message : message.update.Success ? 'Údaje úspěšně aktualizovány' : ''}}</span>
-      <div class="inputWrapper">
-        <input placeholder="Jméno" type="text" formControlName="name" required>
-      </div>
-      <div class="inputWrapper">
-        <input placeholder="Příjmení" type="text" formControlName="surname" required>
-      </div>
-      <div class="inputWrapper">
-        <input placeholder="ID studenta" type="text" formControlName="student" pattern="^[0-9]+$" required>
-      </div>
-      <div class="inputWrapper">
-        <input placeholder="Telefon" type="tel" formControlName="phone" required/>
-      </div>
-      <div class="inputWrapper">
-        <input placeholder="Email" type="email" formControlName="email" required/>
-      </div>
-      <button type="submit">Aktualizovat údaje</button>
+      <control-input [formGroup]="updateForm" formControlName="name" placeholder="Jméno" [required]="true" ngDefaultControl></control-input>
+      <control-input [formGroup]="updateForm" formControlName="surname" placeholder="Příjmení" [required]="true" ngDefaultControl></control-input>
+      <control-input [formGroup]="updateForm" formControlName="student" validation="number" placeholder="ID studenta" [required]="true" ngDefaultControl></control-input>
+      <control-input [formGroup]="updateForm" formControlName="phone" type="tel" validation="phone" placeholder="Telefon" [required]="true" ngDefaultControl></control-input>
+      <control-input [formGroup]="updateForm" formControlName="email" type="email" validation="phone" placeholder="Telefon" [required]="true" ngDefaultControl></control-input>
+      <control-button [formGroup]="updateForm" type="submit" text="Aktualizovat údaje" ngDefaultControl></control-button>
     </form>
     <form [formGroup]="passwordForm" (ngSubmit)="onSubmit('password')" method="post">
       <span [ngClass]='message.password.Success ? "success" : "error"'>{{message.password.Message ? message.password.Message : message.password.Success ? 'Heslo změněno' : ''}}</span>
-      <div class="inputWrapper">
-        <input placeholder="Nové heslo" type="password" formControlName="password" required/>
-      </div>
-      <div class="inputWrapper">
-        <input placeholder="Nové heslo znovu" type="password" formControlName="passwordRepeat" required/>
-      </div>
-      <button type="submit">Změnit heslo</button>
+      <control-input [formGroup]="updateForm" formControlName="password" type="password" placeholder="Nové heslo" [required]="true" ngDefaultControl></control-input>
+      <control-input [formGroup]="updateForm" formControlName="passwordRepeat" type="password" placeholder="Nové heslo znovu" [required]="true" ngDefaultControl></control-input>
+      <control-button [formGroup]="updateForm" type="submit" text="Změnit heslo" ngDefaultControl></control-button>
     </form>
-    <button (click)="deleteUser()">Smazat účet</button>
+    <control-button text="Smazat účet" (click)="deleteUser()" ngDefaultControl></control-button>
   </div>
 </div>

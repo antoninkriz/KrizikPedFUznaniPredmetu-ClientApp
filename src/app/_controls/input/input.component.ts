@@ -15,7 +15,7 @@ export class InputControl {
 
   @Input() placeholder: string = null;
 
-  @Input() pattern: RegExp = /.*/;
+  @Input() pattern: RegExp = null;
   @Input() maxLen: number = null;
   @Input() minLen: number = null;
 
@@ -28,12 +28,25 @@ export class InputControl {
 
   public valid: boolean;
 
+  private patterns = {
+    email: /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+    phone: /^(\+?[0-9]{1,3} ?)?([0-9]{3} ?){3}$/,
+    number: /^[0-9]*$/,
+    decimal: /^[0-9]*[,.]?[0-9]*/
+  };
+
   constructor(
     private formBuilder: FormBuilder
   ) {
     if (!this.formGroup || !this.formControlName) {
       this.formControlName = "inp" + Math.ceil(Math.random() * 10000);
       this.formGroup = this.formBuilder.group({[this.formControlName]: ['', null]});
+    }
+
+    if (!this.pattern && this.patterns.hasOwnProperty(this.validation)) {
+      this.pattern = this.patterns[this.validation];
+    } else {
+      this.pattern = /.*/;
     }
   }
 
@@ -44,18 +57,12 @@ export class InputControl {
   }
 
   private validate(value: string): boolean {
-    let rgx: RegExp = this.pattern ? this.pattern : /.*/;
+    let rgx: RegExp = this.pattern;
 
-    switch (this.validation) {
-      case "email":
-        rgx = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
-        break;
-      case "phone":
-        rgx = /^(\+?[0-9]{1,3} ?)?([0-9]{3} ?){3}$/;
-        break;
-      case "number":
-        rgx = /^[0-9]*$/;
-        break;
+    if (!this.pattern && this.patterns.hasOwnProperty(this.validation)) {
+      rgx = this.patterns[this.validation];
+    } else {
+      rgx = /.*/;
     }
 
     return !!value.match(rgx);
