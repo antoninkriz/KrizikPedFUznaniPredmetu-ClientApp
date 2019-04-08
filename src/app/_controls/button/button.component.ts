@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
@@ -6,7 +6,7 @@ import {FormBuilder, FormGroup} from "@angular/forms";
   templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss']
 })
-export class ButtonControl {
+export class ButtonControl implements OnInit{
   @Input() formGroup: FormGroup;
 
   @Input() type: string = "button";
@@ -20,6 +20,9 @@ export class ButtonControl {
   constructor(
     private formBuilder: FormBuilder
   ) {
+  }
+
+  ngOnInit(): void {
     if (!this.formGroup) {
       let fakeName = "inp" + Math.ceil(Math.random() * 10000);
       this.formGroup = this.formBuilder.group({[fakeName]: ['', null]});

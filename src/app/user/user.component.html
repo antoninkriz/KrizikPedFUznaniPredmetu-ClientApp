@@ -11,9 +11,9 @@
     </form>
     <form [formGroup]="passwordForm" (ngSubmit)="onSubmit('password')" method="post">
       <span [ngClass]='message.password.Success ? "success" : "error"'>{{message.password.Message ? message.password.Message : message.password.Success ? 'Heslo změněno' : ''}}</span>
-      <control-input [formGroup]="updateForm" formControlName="password" type="password" placeholder="Nové heslo" [required]="true" ngDefaultControl></control-input>
-      <control-input [formGroup]="updateForm" formControlName="passwordRepeat" type="password" placeholder="Nové heslo znovu" [required]="true" ngDefaultControl></control-input>
-      <control-button [formGroup]="updateForm" type="submit" text="Změnit heslo" ngDefaultControl></control-button>
+      <control-input [formGroup]="passwordForm" formControlName="password" type="password" placeholder="Nové heslo" [required]="true" ngDefaultControl></control-input>
+      <control-input [formGroup]="passwordForm" formControlName="passwordRepeat" type="password" placeholder="Nové heslo znovu" [required]="true" ngDefaultControl></control-input>
+      <control-button [formGroup]="passwordForm" type="submit" text="Změnit heslo" ngDefaultControl></control-button>
     </form>
     <control-button text="Smazat účet" (click)="deleteUser()" ngDefaultControl></control-button>
   </div>

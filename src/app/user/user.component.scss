@@ -4,11 +4,9 @@
   padding: 29px 30px 60px;
 
   form {
-    &:not(:last-of-type) {
-      padding-bottom: 25px;
-      margin-bottom: 25px;
-      border-bottom: solid 1px gray;
-    }
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+    border-bottom: solid 1px $color-dark;
 
     .error, .success {
       text-align: center;
@@ -23,6 +21,14 @@
 
     .success {
       color: $color-green;
+    }
+
+    control-input {
+      margin-bottom: 20px;
+    }
+
+    control-input, control-button {
+      display: block;
     }
   }
 }
